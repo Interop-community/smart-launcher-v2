@@ -76,7 +76,7 @@ export function SMARTInfo({ client, mode }: { client: Client, mode: "html" | "js
                             <th>Introspection Endpoint</th>
                             <td className="text-info">{ meta.introspection_endpoint + "" }</td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <th>Supported Code Challenge Methods</th>
                             <td className="text-info">{ (meta.code_challenge_methods_supported as string[]).map((m, i) => (
                                 <span key={i}>
@@ -84,8 +84,8 @@ export function SMARTInfo({ client, mode }: { client: Client, mode: "html" | "js
                                     <code>{m}</code>
                                 </span>
                             )) }</td>
-                        </tr>
-                        <tr>
+                        </tr> */}
+                        {/* <tr>
                             <th>Supported Token Auth Methods</th>
                             <td className="text-info">{ (meta.token_endpoint_auth_methods_supported as string[]).map((m, i) => (
                                 <span key={i}>
@@ -93,7 +93,7 @@ export function SMARTInfo({ client, mode }: { client: Client, mode: "html" | "js
                                     <code>{m}</code>
                                 </span>
                             )) }</td>
-                        </tr>
+                        </tr> */}
                         <tr>
                             <th>Supported Scopes</th>
                             <td className="text-info">{ (meta.scopes_supported as string[]).map((m, i) => (

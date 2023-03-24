@@ -1,7 +1,8 @@
 import { oauth2 } from "fhirclient"
+import { platform } from "node:os";
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom";
-import { decode } from "../../isomorphic/codec";
+import { decode,base64UrlEncode } from "../../isomorphic/codec";
 
 
 export default function SampleAppLaunch() {
@@ -10,7 +11,10 @@ export default function SampleAppLaunch() {
 
     const [error, setError] = useState()
 
-    const launch = decode(searchParams.get("launch") || "")
+    const launch =searchParams.get("platform") == 'meld' ? decode(
+        base64UrlEncode(JSON.stringify([0, "", "", "AUTO", 0, 0, 0, "", "", searchParams.get("client_id") || "", "", "", "", "", 0, 1]))
+    ) : decode(searchParams.get("launch") || "")
+
 
     useEffect(() => {
         oauth2.authorize({

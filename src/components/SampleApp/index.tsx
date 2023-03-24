@@ -48,7 +48,7 @@ export default function SampleApp()
 
     // The code from EHR launch or the launch from standalone launch
     const [launchParams, setLaunchParams] = useState(
-        JSON.parse(sessionStorage.launchParams || "{}")
+        JSON.parse("{}")
     )
 
     // After render get the client instance
@@ -56,7 +56,7 @@ export default function SampleApp()
 
         // EHR LAUNCH ----------------------------------------------------------
         if (code && state) {
-            const params = JSON.parse(window.atob(code.split(".")[1]))
+            const params = code; //JSON.parse(window.atob(code.split(".")[1]))
             sessionStorage.launchParams = JSON.stringify(params) // Remember launch params
             setLaunchParams(params)
             oauth2.ready().then(setClient, setError).finally(() => setLoading(false))
@@ -180,7 +180,7 @@ export default function SampleApp()
                 {/* <ClientInfo    params={launchParams} /> */}
                 <TokenResponse client={client} />
                 <IDToken       client={client} />
-                <RefreshToken  client={client} />
+                {/* <RefreshToken  client={client} /> */}
                 <User          client={client} />
                 <Patient       client={client} />
                 <Encounter     client={client} />

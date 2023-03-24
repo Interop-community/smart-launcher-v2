@@ -10,7 +10,7 @@ export default function Encounter({ client }: { client: Client }) {
     const [error  , setError  ] = useState()
 
     useEffect(() => {
-        client.encounter.read()
+        client.patient.request("Encounter")
             .then(rec => setRecord(rec))
             .catch(er => setError(er))
             .finally(() => setLoading(false))
@@ -18,7 +18,7 @@ export default function Encounter({ client }: { client: Client }) {
 
     return (
         <div className="panel">
-            <h4>Encounter FHIR Resource</h4>
+            <h4>Encounter FHIR Resources of the Patient: {client.patient.id}</h4> 
             {
                 loading ?
                     "Loading..." :
